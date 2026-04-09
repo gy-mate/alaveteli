@@ -2,6 +2,7 @@
 
 ## Highlighted Features
 
+* Allow censor rules to be case insensitive (Gareth Rees)
 * Strip ActionText attachments from Project rich text fields (Graeme Porteous)
 * Validate profile photo content type before ImageMagick processing
   (Graeme Porteous)
@@ -61,6 +62,12 @@
     Rails.application.config.after_initialize do
       AtiNetworkController.showcase_enabled = false
     end
+
+* _Optional:_ Censor rules can now be made case insensitive. This is disabled by
+  default while we beta test it before full release. Before then you can enable
+  it by running:
+
+    bin/rails runner "AlaveteliFeatures.backend.enable(:censor_rule_case_sensitive)"
 
 ### Changed Templates
 
