@@ -2,6 +2,8 @@
 
 ## Highlighted Features
 
+* Use Regexp rule when anonymising users to catch common name variants (Gareth
+  Rees)
 * Allow censor rules to be case insensitive (Gareth Rees)
 * Strip ActionText attachments from Project rich text fields (Graeme Porteous)
 * Validate profile photo content type before ImageMagick processing
