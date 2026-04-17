@@ -236,6 +236,20 @@ class FoiAttachment < ApplicationRecord
     AttachmentToHTML.to_html(self, **kwargs)
   end
 
+  def body_to_text
+    text = MailHandler.
+      get_attachment_text_one_file(content_type, default_body, charset)
+    text = convert_string_to_utf8(text, 'UTF-8').string
+    text = apply_masks(text, 'text/html') unless locked?
+    text
+  end
+
+  def apply_masks(text, content_type)
+    mask_options = { censor_rules: info_request.applicable_censor_rules,
+                     masks: info_request.masks }
+    AlaveteliTextMasker.apply_masks(text, content_type, mask_options)
+  end
+
   def cached_urls
     [
       request_path(info_request)
