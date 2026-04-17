@@ -2,6 +2,7 @@
 
 ## Highlighted Features
 
+* Allow censor rules to ignore diacritics (Gareth Rees)
 * Allow censor rules to be case insensitive (Gareth Rees)
 * Render public body category notes (Gareth Rees)
 * Prevent external search indexing of password change form (Gareth Rees)
@@ -95,6 +96,12 @@
 
     bin/rails runner "AlaveteliFeatures.backend.enable(:censor_rule_case_sensitive)"
 >>>>>>> b8e52bc38 (Add CensorRule#case_sensitive)
+
+* _Optional:_ Censor rules can now ignore diacritics. This is disabled by
+  default while we beta test it before full release. Before then you can enable
+  it by running:
+
+    bin/rails runner "AlaveteliFeatures.backend.enable(:censor_rule_ignore_diacritics)"
 
 ### Changed Templates
 
