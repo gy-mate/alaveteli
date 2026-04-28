@@ -57,6 +57,11 @@ RSpec.describe CensorRule::DiacriticFolder do
         expect(folder.fold('Á')).to eq('[AÀÁÂÃÄÅĀ]')
       end
 
+      it 'handles multi-character diacritics' do
+        expect(folder.fold('œ')).to eq('(œ|oe)')
+        expect(folder.fold('Œ')).to eq('(Œ|OE)')
+      end
+
       it 'handles strings with spaces and punctuation' do
         expected =
           '[cçćč][aàáâãäåā]f[eèéêëēě] ' \
