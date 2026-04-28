@@ -2,6 +2,7 @@
 
 ## Highlighted Features
 
+* Prevent banned users replying through the response upload form (Gareth Rees)
 * Strip ActionText attachments from Project rich text fields (Graeme Porteous)
 * Validate profile photo content type before ImageMagick processing
   (Graeme Porteous)
