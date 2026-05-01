@@ -2,7 +2,19 @@
 # CensorRule#text
 class User::Anonymisable::NamePattern
   DEFAULT_HONORIFICS = 'Mr|Mrs|Miss|Ms|Mx'
-  DEFAULT_PATTERN = '\b(?:(?:%{honorifics})\.?\s+(?:%{firstname}\s+)?%{surname}|%{firstname}(?:\s+%{surname}|\s+%{last_initial}\.?)?|%{first_initial}\.?\s*%{surname}|%{surname},\s+(?:%{firstname}|%{first_initial}\.?))(?!\w)'
+  DEFAULT_PATTERN = /
+    \b
+    (?:
+      (?:%{honorifics})\.? \s+ (?:%{firstname}\s+)? %{surname}
+      |
+      %{firstname} (?: \s+ %{surname} | \s+ %{last_initial}\.? )?
+      |
+      %{first_initial}\.? \s* %{surname}
+      |
+      %{surname} ,\s+ (?: %{firstname} | %{first_initial}\.? )
+    )
+    (?!\w)
+  /x
 
   cattr_accessor :honorifics, default: DEFAULT_HONORIFICS
   cattr_accessor :pattern, default: DEFAULT_PATTERN
@@ -12,7 +24,7 @@ class User::Anonymisable::NamePattern
   end
 
   def to_censor_rule_text
-    format(pattern, substitutions)
+    format(pattern_string, substitutions)
   end
 
   # Hash with Regexp-escaped values
@@ -51,6 +63,12 @@ class User::Anonymisable::NamePattern
   attr_reader :name
 
   private
+
+  def pattern_string
+    return pattern unless pattern.is_a?(Regexp)
+    return pattern.source unless (pattern.options & Regexp::EXTENDED).nonzero?
+    "(?x:#{pattern.source.squish.gsub(' ', '')})"
+  end
 
   def parts
     @parts ||= @name.strip.split(/\s+/)

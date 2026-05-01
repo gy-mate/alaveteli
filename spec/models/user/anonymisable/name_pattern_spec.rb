@@ -171,7 +171,7 @@ RSpec.describe User::Anonymisable::NamePattern do
   describe '#to_censor_rule_text' do
     subject { described_class.new('Bob Smith').to_censor_rule_text }
 
-    it { is_expected.to eq('\b(?:(?:Mr|Mrs|Miss|Ms|Mx)\.?\s+(?:Bob\s+)?Smith|Bob(?:\s+Smith|\s+S\.?)?|B\.?\s*Smith|Smith,\s+(?:Bob|B\.?))(?!\w)') }
+    it { is_expected.to eq('(?x:\b(?:(?:Mr|Mrs|Miss|Ms|Mx)\.?\s+(?:Bob\s+)?Smith|Bob(?:\s+Smith|\s+S\.?)?|B\.?\s*Smith|Smith,\s+(?:Bob|B\.?))(?!\w))') }
 
     context 'with a custom pattern' do
       around do |example|
