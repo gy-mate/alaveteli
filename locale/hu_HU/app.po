@@ -394,7 +394,7 @@ msgid "A one line summary of the information you are requesting, e.g."
 msgstr "Az igényelt információk összefoglalása egy sorban. pl:<br/>"
 
 msgid "A powerful, fully-featured FOI toolkit for journalists"
-msgstr "Egy erős, teljes értékű FOI eszköz újságíróknak"
+msgstr "Egy hatékony, teljes körű információszabadság-eszköz újságírók számára"
 
 msgid "A public authority"
 msgstr "Egy adatgazda"
@@ -1177,7 +1177,7 @@ msgid "Extraction updated successfully!"
 msgstr ""
 
 msgid "FOI"
-msgstr "KözAdat"
+msgstr "Közadat"
 
 msgid "FOI in Action"
 msgstr ""
@@ -4860,7 +4860,7 @@ msgid "{{pro_site_name}} Terms"
 msgstr "{{pro_site_name}} Feltételek"
 
 msgid "{{pro_site_name}} is a powerful, fully-featured FOI toolkit for journalists."
-msgstr "{{pro_site_name}} is a powerful, fully-featured FOI toolkit for journalists."
+msgstr "{{pro_site_name}} – egy hatékony, teljes körű információszabadság-eszköz újságírók számára."
 
 msgid "{{public_body_link_absolute}}"
 msgstr "{{public_body_link_absolute}}"
